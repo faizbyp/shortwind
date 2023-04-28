@@ -1,17 +1,22 @@
 export function App () {
+  const handlePost = (e) => {
+    e.preventDefault()
+    console.log('data')
+  }
+
   return (
-    <>
-      <header className='p-6 text-center bg-amber-200 hover:bg-amber-400 text-amber-950 hover:text-white'>
-        <h1 className="text-3xl font-bold">
-          shortwind
-        </h1>
-        <p>link shortener using cleanuri api</p>
-      </header>
-
-      <form className="text-center">
-        <input type="text" name="url" className="outline" />
-      </form>
-
-    </>
+    <main className="h-screen bg-amber-100 grid grid-cols-1 md:grid-cols-2 place-content-center">
+      <section className="text-center m-auto">
+        <h1 className="text-6xl md:text-8xl font-serif">Shortwind</h1>
+        <p className="text-lg">Shorten your link</p>
+        <form action="" className="w-full">
+          <input type="text" className="text-base bg-amber-300 rounded-md p-2 mt-4" />
+          <button type="submit" onClick={handlePost} className="bg-amber-500 hover:bg-amber-600 p-2 rounded-md ms-4">Shorten</button>
+        </form>
+      </section>
+      <section className="m-auto hidden md:block">
+        <h1 className="text-center text-5xl font-serif place-content-center">(Add Element Here)</h1>
+      </section>
+    </main>
   )
 }

@@ -1,7 +1,19 @@
+import axios from 'axios'
+import { useState } from 'react'
+
 export function App () {
+  const [req, setReq] = useState('')
+
   const handlePost = (e) => {
     e.preventDefault()
-    console.log('data')
+    console.log(req)
+    axios.post('https://cleanuri.com/api/v1/shorten/', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+      },
+      url: req
+    }).then((response) => console.log(response))
   }
 
   return (
@@ -10,7 +22,7 @@ export function App () {
         <h1 className="text-6xl md:text-8xl font-serif">Shortwind</h1>
         <p className="text-lg">Shorten your link</p>
         <form action="" className="w-full">
-          <input type="text" className="text-base bg-amber-300 rounded-md p-2 mt-4" />
+          <input type="text" className="text-base bg-amber-300 rounded-md p-2 mt-4" onChange={(e) => setReq(e.target.value)} />
           <button type="submit" onClick={handlePost} className="bg-amber-500 hover:bg-amber-600 p-2 rounded-md ms-4">Shorten</button>
         </form>
       </section>
